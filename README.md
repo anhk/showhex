@@ -1,0 +1,2 @@
+# showhex
+show hex
