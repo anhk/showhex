@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <string.h>
+#include <unistd.h>
 #include <fcntl.h>
 
 static void show_line(const uint8_t *data, size_t len)
