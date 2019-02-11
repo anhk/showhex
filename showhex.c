@@ -39,21 +39,16 @@ static void show_hex(const void *data, size_t len)
 
 int main(int argc, char **argv)
 {
-    if (argc < 2) {
-        printf("Bad Argument.\n");
-        return -1;
-    }
-
-    //printf("%s\n", argv[1]);
-
     char buff[BUFSIZ];
-    int ret;
+    int ret, fd = -1;
 
-    int fd = open(argv[1], O_RDONLY);
-    if (fd < 0) {
+    if (argc < 2) {
+        fd = STDIN_FILENO;
+    } else if ((fd = open(argv[1], O_RDONLY)) < 0) {
         perror("open:");
         return -1;
     }
+
     while ((ret = read(fd, buff, BUFSIZ)) > 0) {
         show_hex(buff, ret);
     }
